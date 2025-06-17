@@ -90,7 +90,7 @@
                             </td>
                             <td class="text-capitalize">{{ $mitigation->risk_treatment }}</td>
                             <td>{{ $mitigation->assignedStaff->name ?? 'N/A' }}</td>
-                            <td>{{ $mitigation->solution_details ?? 'N/A' }}</td>
+                            <td>{{ $mitigation->staff_solution ?? 'N/A' }}</td>
                             <td>{{ $mitigation->date_assigned ? \Carbon\Carbon::parse($mitigation->date_assigned)->format('d M Y') : 'N/A' }}</td>
                         </tr>
                     @endforeach

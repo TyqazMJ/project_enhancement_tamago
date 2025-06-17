@@ -8,6 +8,15 @@ use App\Http\Controllers\RiskController;
 use App\Http\Controllers\RiskMitigationController;
 use App\Http\Controllers\Admin\RiskEvaluationController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\Auth\OTPController;
+
+// GET: Show OTP form (only for authenticated users)
+Route::get('/2fa', function () {
+    return view('auth.otp');
+})->middleware('auth');
+
+// POST: Submit OTP code for verification (also requires auth)
+Route::post('/2fa', [OTPController::class, 'verify'])->middleware('auth')->name('otp.verify');
 
 Route::get('/superadmin/dashboard', [SuperAdminController::class, 'dashboard'])
     ->middleware('auth') // if you use auth
